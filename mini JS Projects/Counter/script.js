@@ -3,58 +3,38 @@ const decrementBtn = document.querySelector('#decrement');
 const counterValue = document.querySelector('#counter_value');
 const restBtn = document.querySelector('#rest');
 const inputElement = document.querySelector('#input_value');
-let value = 0;
-let inputValue;
-let inputNumber;
+
+
+
+// update counter
+function updateCounter(newValue) {
+    counterValue.innerText = newValue;
+}
 
 // increment value 
-function increment() {
-    incrementBtn.addEventListener('click', function () {
-        inputValue = inputElement.value;
-        inputNumber = parseInt(inputValue);
-        if (inputNumber === 0) {
-            value = 0;
-            counterValue.innerHTML = value;
-        } else if (inputNumber !== 0) {
-            value += inputNumber
-            counterValue.innerHTML = value;
-        } else {
-            value += 1;
-            counterValue.innerHTML = value;
-        }
-
-    })
-}
+incrementBtn.addEventListener('click', function () {
+    const inputValue = inputElement.value;
+    const inputNumber = parseInt(inputValue);
+    if (!isNaN(inputNumber)) {
+        updateCounter(parseInt(counterValue.innerText) + inputNumber)
+    } else {
+        updateCounter(parseInt(counterValue.innerText) + 1)
+    }
+})
 
 // decrement vlaue 
-function decrement() {
-    decrementBtn.addEventListener('click', function () {
-        inputValue = inputElement.value;
-        inputNumber = parseInt(inputValue);
-        if (inputNumber === 0) {
-            value = 0;
-            counterValue.innerHTML = value;
-        } else if (inputNumber !== 0) {
-            value -= inputNumber;
-            counterValue.innerHTML = value;
-        } else {
-            value -= 1;
-            counterValue.innerHTML = value;
-        }
-
-    })
-}
+decrementBtn.addEventListener('click', function () {
+    inputValue = inputElement.value;
+    inputNumber = parseInt(inputValue);
+    if (!isNaN(inputNumber)) {
+        updateCounter(parseInt(counterValue.innerText) - inputNumber)
+    } else {
+        updateCounter(parseInt(counterValue.innerText) - 1)
+    }
+})
 
 // rest the value 
-function restValue() {
-    restBtn.addEventListener('click', function () {
+restBtn.addEventListener('click', function () {
+    updateCounter(0)
+})
 
-        value = 0;
-        counterValue.innerHTML = 0;
-    })
-}
-
-
-increment()
-decrement()
-restValue()
