@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <h1>BMI Calculator</h1>
+    </nav>
+    <div class="input_elem">
+        <label for="height">Height(cm):</label>
+        <input type="number" id="user_height" placeholder="Enter Height">
+        <label for="height">Weight(kg):</label>
+        <input type="number" id="user_weight" placeholder="Enter Weight">
+        <button id="calculte_bmi">Calculate BMI</button>
+        <ul><p>Note:</p> 
+            <li>Underweight: BMI less than 18.5</li>
+            <li>Normal weight: BMI between 18.5 and 24.9</li>
+            <li>Overweight: BMI between 25 and 29.9</li>
+        </ul>
+        <h3>Your BMI: <span id="bmi">------</span> </h3>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

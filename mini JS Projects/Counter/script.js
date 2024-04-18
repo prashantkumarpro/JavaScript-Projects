@@ -33,7 +33,7 @@ decrementBtn.addEventListener('click', function () {
     }
 })
 
-// rest the value 
+// reset the value 
 restBtn.addEventListener('click', function () {
     updateCounter(0)
 })
