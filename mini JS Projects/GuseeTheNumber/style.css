@@ -33,70 +33,69 @@ nav h1 {
     font-size: 1.8rem;
 }
 
-.input_elem {
+.container {
     display: flex;
     flex-direction: column;
-    padding: 6rem;
+    padding: 5rem;
     width: 100%;
     height: 100vh;
     background-color: #f4f4f4;
 }
 
 label {
-    margin: 10px 0;
+    margin: 15px 0;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #333;
 }
 
 input[type="number"] {
+    margin: 0 auto;
+    max-width: 280px;
     width: 100%;
     padding: 10px 10px;
-    border-radius: 6px;
+    border-radius: 2px;
     border: 1.5px solid #333;
     margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
-button {
+input[type="submit"] {
+    appearance: auto;
     width: fit-content;
     margin: 0 auto;
-    padding: 10px 22px;
-    background-color: #1172da;
-    border-radius: 6px;
-    border: none;
-    color: #fff;
+    padding: 6px 18px;
+    background-color: #E5E5E5;
+    color: #333;
     margin-bottom: 20px;
-    cursor: pointer;
     font-size: 1rem;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #0a63c2;
-}
-
-ul {
-    width: 100%;
+button[type="button"] {
+    appearance: auto;
+    width: fit-content;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px 0;
+    padding: 12px 18px;
+    background-color: #E5E5E5;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-ul li {
-    font-size: 0.88rem;
-    list-style: none;
-
+input[type="submit"]:disabled,
+button[type="button"]:disabled,
+input[type="number"]:disabled {
+    cursor: not-allowed;
 }
 
-ul p {
-    font-weight: bold;
-    font-size: 0.98rem;
+p {
+    margin-bottom: 20px;
 }
 
 @media (max-width:600px) {
-    .input_elem {
+    .container {
         padding: 6rem 1rem;
     }
 
