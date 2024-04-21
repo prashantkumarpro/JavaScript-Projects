@@ -17,6 +17,12 @@ submit.addEventListener('click', function () {
         return;
     }
 
+    if (isNaN(userInput.value) || userInput.value > 100 || userInput.value < 0) {
+        alert('Please enter vaild number');
+        userInput.value = '';
+        return;
+    }
+
     const inputValue = parseInt(userInput.value);
     userInputArray.push(inputValue);
     userGuesses(userInputArray);
@@ -42,7 +48,7 @@ submit.addEventListener('click', function () {
 // Start game event
 startGame.addEventListener('click', function () {
     randomNum = Math.floor(Math.random() * 101);
-    console.log(randomNum);
+    // console.log(randomNum);
     userInputArray = [];
     disabled(startGame);
     enabled(submit);
