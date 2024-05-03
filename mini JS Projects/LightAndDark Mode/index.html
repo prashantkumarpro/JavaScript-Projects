@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the number</title>
+    <title>Light & Dark Mode</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,24 +15,26 @@
 
 <body>
     <nav>
-        <h1>Guess the number</h1>
+        <h1>Ligt & Dark Mode</h1>
     </nav>
+
     <div class="container">
-        <label>Enter a guess number between 0 to 100</label>
-        <input type="number" placeholder="Enter a number" class="user_input" required>
-        <div class="buttons">
-            <input class="submit" type="submit" value="Submit" >
-            <button class="start_game" type="button" disabled>Start Game</button>
+        <label for="parentCheckBox darkMode">Dark Mode:</label>
+        <input type="checkbox" name="parentCheckBox darkMode" id="parentCheckBox" class="">
+        <h2>The entire page color theme is controlled using CSS and JavaScript</h2>
+        <label for="contantDarkMode">Contained dark mode: </label>
+        <input type="checkbox" name="contatnTheme" class="contatnTheme">
+        <div class="childContainer">
+            <h2>
+                The container color scheme is controlled by only CSS
+            </h2>
         </div>
-        <div>
-            <p class="result"></p>
-            <p class="guesses_number"></p>
-        </div>
-
-        
     </div>
-
     <script src="script.js"></script>
 </body>
+<script>
+
+
+</script>
 
 </html>

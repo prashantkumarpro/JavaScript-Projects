@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the number</title>
+    <title>Dialog Popup</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,21 +15,17 @@
 
 <body>
     <nav>
-        <h1>Guess the number</h1>
+        <h1>Dialog Popup</h1>
     </nav>
     <div class="container">
-        <label>Enter a guess number between 0 to 100</label>
-        <input type="number" placeholder="Enter a number" class="user_input" required>
-        <div class="buttons">
-            <input class="submit" type="submit" value="Submit" >
-            <button class="start_game" type="button" disabled>Start Game</button>
+        <button class="show_dialog" onclick="showDialog()">Show Dialog</button>
+        <div class="card">
+            <h1>Header</h1>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet amet iure esse exercitationem, cumque
+                accusamus quisquam fugit nihil placeat velit non, praesentium neque similique? Nulla corrupti, minus
+                repudiandae facilis tenetur veniam eum.</p>
+            <button class="close_dialog" onclick="closeDialog()">Close Dialog</button>
         </div>
-        <div>
-            <p class="result"></p>
-            <p class="guesses_number"></p>
-        </div>
-
-        
     </div>
 
     <script src="script.js"></script>
