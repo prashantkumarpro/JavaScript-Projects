@@ -41,7 +41,7 @@ input[name='contatnTheme']{
     margin-bottom: 20px;
     
 }
-.theme{
+.dark{
     background-color: black;
     color: white;
 }
