@@ -36,7 +36,7 @@ nav h1 {
 input[name='darkMode']{
     margin-bottom: 30px;
 }
-input[name='contatnTheme']{
+input[name='contentTheme']{
     margin-top: 30px;
     margin-bottom: 20px;
     
@@ -51,7 +51,7 @@ input[name='contatnTheme']{
     background-color: white;
     color: black;
 }
-.contatnTheme:checked + .childContainer {
+.contentTheme:checked + .childContainer {
     background-color: black;
     color:white;
 }
