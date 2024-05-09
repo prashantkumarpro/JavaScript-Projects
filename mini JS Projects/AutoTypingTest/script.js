@@ -23,7 +23,9 @@ function typedAndRemove(word, index) {
 typedAndRemove(word, index)
 
 
-
+// else if (index === word.length) {
+//     typingText.innerHTML = typingText.innerHTML.slice(0, -1)
+// }
 
 
 
