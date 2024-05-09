@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    display: block;
+    margin: 5rem;
+    text-align: left;
+    font-size: 4rem;
+}
+
+.typingText {
+    display: inline-flex;
+    align-items: center;
+    color: #a80c0c;
+
+}
+
+.typingText::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 60px;
+    background-color: #a80c0c;
+    margin-left: 4px;
+}
