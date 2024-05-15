@@ -1,31 +1,36 @@
 const typingText = document.querySelector('.typingText');
-const words = ['Developer.', 'Coder.', 'Teacher.']
+const words = ['Developer.', 'Coder.', 'Teacher.', 'Programmer.']
+let wordIndex = 0;
+let charIndex = 0;
+let skipUpdater = 0;
+
+function tyepdText() {
+
+    if (words[wordIndex].length > charIndex) {
+        typingText.innerText += words[wordIndex][charIndex]
+        charIndex++;
+    }
+    else {
+        charIndex = 0
+        typingText.innerText = ''
+        wordIndex++
+    }
+    if (words.length === wordIndex) {
+        wordIndex = 0;
+    }
+    if (charIndex === words[wordIndex].length) {
+        
+    }
 
 
-let word = words[0];
-let index = 0;
 
-function typedAndRemove(word, index) {
-    setInterval(() => {
-        if (index < word.length) {
-            typingText.innerHTML = typingText.innerHTML + word[index];
-            index++;
-        } 
-        else {
-            index = 0;
-            typingText.innerHTML = "";
-
-        }
-
-
-    }, 200)
 }
-typedAndRemove(word, index)
+
+let myIntervelId = setInterval(tyepdText, 200)
 
 
-// else if (index === word.length) {
-//     typingText.innerHTML = typingText.innerHTML.slice(0, -1)
-// }
+
+
 
 
 

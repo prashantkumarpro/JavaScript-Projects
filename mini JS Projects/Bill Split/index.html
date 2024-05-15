@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Split</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <h1>Bill Split</h1>
+    </nav>
+    <div class="container">
+        <div class="left box">
+           
+            <label for="billInput">Bill </label>
+            <div class="bill_box">
+                <span>₹</span>
+                <input type="text" id="billINput" class="billInput"> 
+            </div>
+          
+
+            <label for="Select_tip">Select Tip</label>
+            <div class="tip_buttons" >
+                <input class="selectTip" type="button" value="5%" disabled >
+                <input class="selectTip" type="button" value="10%" disabled>
+                <input class="selectTip" type="button" value="15%" disabled>
+                <input class="selectTip" type="button" value="25%" disabled>
+                <input class="selectTip" type="button" value="50%" disabled>
+                <input class="selectTip" type="button" value="75%" disabled>
+            </div>
+
+
+            <input type="text" placeholder="Custom Tip" id="custom_Tip" class="custom_Tip" disabled>
+            <label for="numberOfPeople">Number of people</label>
+            <input type="text"  placeholder="No of people" id="noOfPeople" class="noOfPeople" disabled>
+
+            <input type="submit" value="Generate Bill" id="generateBill" disabled>
+        </div>
+        <div class="result box">
+            <div class="amount">
+                <p>Tip amount</p>
+                <p id="tipAmount"></p>
+            </div>
+            <div class="amount">
+                <p>Total</p>
+                <p id="totalAmount"></p>
+            </div>
+            <div class="amount">
+                <p>Each person bill</p>
+                <p id="eachPersonBill"></p>
+            </div>
+            <button id="rest" disabled>Rest</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
