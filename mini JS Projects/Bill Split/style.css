@@ -11,8 +11,6 @@ body {
     height: 100%;
 }
 
-
-
 nav {
     display: flex;
     align-items: center;
@@ -43,7 +41,6 @@ nav h1 {
     display: flex;
     flex-direction: column;
     max-width: 360px;
-    max-height: 400px;
     width: 100%;
     padding: 1rem;
 
@@ -99,6 +96,7 @@ input[type="text"] {
     align-items: flex-start;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin: 5px 0;
 }
 
 .tip_buttons input[type="button"] {
@@ -110,17 +108,18 @@ input[type="text"] {
     cursor: pointer;
     font-size: 1.2rem;
     text-align: center;
+  
 }
 
 .enable {
-    background-color: #9C60FF;
+    background-color: #a675f5;
     color: #fff;
 }
 
 
 
-input[type="button"]:focus {
-    border: 4px solid #FFAD1D;
+.active {
+    outline: 4px solid #FFAD1D;
 }
 
 input[type="submit"] {
@@ -134,21 +133,23 @@ input[type="submit"] {
 }
 
 .result {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
+    margin-top: 50px;
+    padding: 30px;
     background-color: #34568B;
     color: #fff;
     height: 360px;
     border-radius: 8px;
 }
+
 .result .amount p:nth-of-type(2) {
-    color:#b28cf0;
+    color: #bf9df5;
+    font-size: 20px;
 }
 
 .amount {
     display: flex;
-    margin: 35px 0;
-    font-size: 1.3rem;
+    margin: 30px 0;
+    font-size: 1rem;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
@@ -156,9 +157,12 @@ input[type="submit"] {
 }
 
 .result button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
     width: 100%;
-    padding: 10px;
-    border-radius: 4px;
+    margin: 10px 0;
     cursor: pointer;
 }
 
@@ -168,11 +172,8 @@ input[type="text"]:disabled,
 button:disabled {
     cursor: not-allowed;
 }
-
-#foucs:focus {
-
-    border: 4px solid #FFAD1D;
-
+#rest{
+    font-size: 15px;
 }
 
 
