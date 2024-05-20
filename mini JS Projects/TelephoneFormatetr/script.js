@@ -7,7 +7,7 @@ mobileNumber.addEventListener('input', (e) => {
     if (/^\d+$/.test(inputValue)) {
         mobileNumber.value = inputValue;
     } else {
-        mobileNumber.value = inputValue.slice(0, inputValue.length - 1)
+        mobileNumber.value = inputValue.subString(0, inputValue.length - 1)
     }
 
 
