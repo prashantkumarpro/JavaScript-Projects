@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Popup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <h1>Toast Popup</h1>
+    </nav>
+
+    <div class="container">
+        <select id="right-left">
+            <option id="left">Left</option>
+            <option id="right">Right</option>
+        </select>
+        <select id="bottom-top">
+            <option id="top">Top</option>
+            <option id="bottom">Bottom</option>
+        </select>
+        <select id="selected-msg">
+            <option id="success">Success</option>
+            <option id="wrror">Error</option>
+            <option id="warning">Warning</option>
+            <option id="info">Info</option>
+        </select>
+        <input type="text" value="This is a tost message!">
+        <div class="duration-container">
+            <label for="durations">Durations</label>
+            <input type="range" id="durations" min="1">
+        </div>
+        <button id="show-toast"> Show Toast</button>
+        <div class="toast-container">
+           
+        </div>
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
