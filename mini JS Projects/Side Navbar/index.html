@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<style>
+    nav {
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: black;
+        overflow-x: hidden;
+        color: #818181;
+        font-size: 30px;
+        z-index: 1;
+        transition: .5s ease-in;
+    }
+
+    nav h3 {
+        margin-left: 20px;
+    }
+
+    .close-nav {
+        position: absolute;
+        top: 30px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        background-color: transparent;
+        border: none;
+        color: #818181;
+        cursor: pointer;
+    }
+
+    button i {
+        font-size: 45px;
+    }
+
+    .open-nav {
+        z-index: 10;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <nav>
+        <button class="close-nav"><i class="ri-close-line"></i></button>
+        <h3>About</h3>
+        <h3>Service</h3>
+        <h3>Client</h3>
+    </nav>
+    <button class="open-nav"><i class="ri-menu-4-line"></i></button>
+
+    <script>
+        const openNav = document.querySelector('.open-nav');
+        const closeNav = document.querySelector('.close-nav');
+
+        openNav.addEventListener('click', function () {
+            document.querySelector('nav').style.width = '320px'
+            openNav.style.display = 'none'
+        })
+
+        closeNav.addEventListener('click', function () {
+            document.querySelector('nav').style.width = '0'
+            openNav.style.display = 'block'
+        })
+
+    </script>
+</body>
+
+</html>
