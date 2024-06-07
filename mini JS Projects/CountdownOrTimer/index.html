@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown/Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="containter">
+        <h1 class="heading">Countdown  timer</h1>
+        <h1 id="timer">
+            <span id="hrs">00h</span>
+            <span id="min">00m</span>
+            <span id="sec">00s</span>
+        </h1>
+        <div class="selects">
+            <select id="hours-option">
+                <option value="" id="hours-elem">hours</option>
+            </select>
+            <select id="minutes-option">
+                <option value="" id="minutes-elem">minutes</option>
+            </select>
+            <select id="seconds-option">
+                <option value="" id="seconds-elem">seconds</option>
+            </select>
+        </div>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="cancel" disabled>Cancel</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
