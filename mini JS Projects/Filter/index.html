@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="heading">
+           <div class="heading-child">
+            <label for="filter">Filter:</label>
+            <select>
+                <option value="All">All</option>
+                <option value="men's clothing">men's clothing</option>
+                <option value="women's clothing">women's clothing</option>
+                <option value="jewelery">jewelery</option>
+                <option value="electronics">electronics</option>
+            </select>
+           </div>
+           <div class="heading-child">
+            <label for="price">Price: </label>
+            <select class="sort-price">
+                <option value="low to high">low to high</option>
+                <option value="high to low">high to low</option>
+            </select>
+           </div>
+        </div>
+
+        <div class="products-container">
+        </div>
+    </div>
+
+
 </body>
+
 </html>
