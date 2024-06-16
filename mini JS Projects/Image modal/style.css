@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.image-container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7333);
+    z-index: 1;
+}
+
+
+.close-modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 45px;
+    font-weight: 900;
+    cursor: pointer;
+    color: #fff;
+}
+
+.modal img {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 50px;
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+}
+
+.caption {
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    margin: 20px 0;
+}
+
+/* add animation  */
+.modal img,
+.caption {
+    animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+
+/* Adjust grid layout for medium screens */
+@media (max-width: 1024px) {
+    .image-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Adjust grid layout for smaller screens */
+@media (max-width: 768px) {
+    .image-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Adjust grid layout for very small screens */
+@media (max-width: 480px) {
+    .image-container {
+        grid-template-columns: 1fr;
+    }
+}

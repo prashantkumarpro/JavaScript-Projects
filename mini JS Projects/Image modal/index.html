@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image modal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="image-container">
+
+            <img src="https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="nature" width="100">
+
+            <img src="https://images.unsplash.com/photo-1718042416613-43cc2d64f518?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Sunrise" width="100">
+
+            <img src="https://images.unsplash.com/photo-1713970969592-d14b7ea5ebb8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="sky in night" width="100">
+
+            <img src="https://images.unsplash.com/photo-1718304775465-8496e07d6ba2?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="plant" width="100">
+
+            <img src="https://images.unsplash.com/photo-1680726122447-389365db3d5c?q=80&w=1496&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="a woman laying on the ground" width="100">
+
+            <img src="https://images.unsplash.com/photo-1718042417012-e852d297b2ef?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="The sun is setting" width="100">
+
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="close-modal">&times;</div>
+            <img src="" alt="">
+            <div class="caption"></div>
+        </div>
+    </div>
+
+    <script>
+        const modalImage = document.querySelectorAll('.image-container img');
+        const closeModal = document.querySelector('.close-modal');
+        const myModal = document.querySelector('#myModal');
+        const myModalImg = document.querySelector('#myModal img');
+        const imageCaption = document.querySelector('#myModal .caption')
+
+        modalImage.forEach((image) => {
+            image.addEventListener('click', function (e) {
+                myModal.style.display = 'block'
+                console.log(e.target.src)
+                myModalImg.src = e.target.src
+                closeModal.style.display = 'block'
+                imageCaption.innerText = e.target.alt
+            })
+        })
+        
+        closeModal.addEventListener('click', function () {
+            myModal.style.display = 'none'
+        });
+
+       
+    </script>
+</body>
+
+</html>
