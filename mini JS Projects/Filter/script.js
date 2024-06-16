@@ -58,7 +58,7 @@ function displayProducts(data) {
         <div class="product" id=${id}>
                 <img src=${image} alt="bag">
                 <div class="content"> 
-                    <p>${title.slice(0, 12)}</p>
+                    <p>${title.slice(0, 12)+ '...'}</p>
                     <p>$ ${price}</p>
                 </div>
         </div>
