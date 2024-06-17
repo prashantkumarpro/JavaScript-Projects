@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Quote Generator</title>
 </head>
+<!-- start the styling -->
 <style>
     * {
         margin: 0;
@@ -62,20 +63,6 @@
         color: #0d0d0d;
     }
 
-    .card p {
-        animation: zoom 0.6s ease-in-out;
-    }
-
-    @keyframes zomm {
-        from {
-            transform: scale(0);
-        }
-
-        to {
-            transform: scale(1);
-        }
-
-    }
 
     button {
         padding: 10px 18px;
@@ -102,13 +89,16 @@
 
 <body>
     <div class="container">
+        <!-- card  -->
         <div class="card">
             <p class="quote-text"></p>
             <small class="author"></small>
         </div>
+        <!-- button to generate quote  -->
         <button id="generateQuote">Generate Quote</button>
     </div>
 
+    <!-- start the JavaScript code  -->
     <script>
         const generateQuoteButton = document.querySelector('#generateQuote');
         const quoteText = document.querySelector('.card p');
