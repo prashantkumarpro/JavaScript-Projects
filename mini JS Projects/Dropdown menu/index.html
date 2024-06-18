@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdwon menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="banner">
+            <img src="https://serviceonline.bihar.gov.in/resources/homePage/10/images/RTPS_Header_desktop.png"
+                alt="nav-banner">
+        </div>
+        <nav>
+            <div class="dropdown">
+                <h3 class="nav-link">Apply Online<span><i class="ri-arrow-down-s-fill"></i></span></h3>
+                <div class="dropdown-content">
+                    <a href="#" id="rtps_service">RTPS Service<span><i class="ri-arrow-right-s-fill"></i></span>
+                    </a>
+                    <a href="#other_service">Other Service<span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#external_service">External Service<span><i class="ri-arrow-right-s-fill"></i></span></a>
+                </div>
+                <div class="dropdown-sub-content">
+                    <a href="#option1">Option 1 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option2">Option 2 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option3">Option 3 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <h3 class="nav-link">Service releted info<span><i class="ri-arrow-down-s-fill"></i></span></h3>
+                <div class="dropdown-content">
+                    <a href="#option1">Option 1 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option2">Option 2 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option3">Option 3 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <h3 class="nav-link">Citizen Section<span><i class="ri-arrow-down-s-fill"></i></span></h3>
+                <div class="dropdown-content">
+                    <a href="#option1">Option 1 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option2">Option 2 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option3">Option 3 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <h3 class="nav-link">Self Support Section<span><i class="ri-arrow-down-s-fill"></i></span></h3>
+                <div class="dropdown-content">
+                    <a href="#option1">Option 1 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option2">Option 2 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option3">Option 3 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <h3 class="nav-link">Report Section <span><i class="ri-arrow-down-s-fill"></i></span>
+                </h3>
+                <div class="dropdown-content report-section">
+                    <a href="#option1">Option 1 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option2">Option 2 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                    <a href="#option3">Option 3 <span><i class="ri-arrow-right-s-fill"></i></span></a>
+                </div>
+            </div>
+            <h3 class="nav-link">Technical Supoort</h3>
+            <h3 class="nav-link">FAQ</h3>
+            <h3 class="nav-link">About us</h3>
+            <h3 class="nav-link">Contact Us</h3>
+            <h3 class="nav-link">LOGIN</h3>
+        </nav>
+    </header>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const dropdownContents = document.querySelectorAll('.dropdown-content');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+
+                navLinks.forEach(link => link.classList.remove('active'))
+                e.target.classList.add('active')
+
+                let nextElementSibling = e.target.nextElementSibling
+                if (e.target.nextElementSibling.classList.contains('dropdown-content')) {
+                    dropdownContents.forEach(dropdownContent => dropdownContent.style.display = 'none')
+                    nextElementSibling.style.display = 'block'
+                    console.log(nextElementSibling)
+                    console.log('yes contains')
+                } else {
+                    document.querySelector('.report-section').style.display = 'none'
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
