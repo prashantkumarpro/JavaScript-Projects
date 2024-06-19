@@ -17,6 +17,8 @@ let minutes, hours, seconds;
 let myInterval;
 let myAudio = new Audio('time_ups.mp3');
 myAudio.loop = false;
+
+
 // Get all select elements in the document and attach an input event listener to each one
 document.querySelectorAll('select')
     .forEach(selectedElem => {
