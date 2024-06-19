@@ -1,7 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+
+}
+
 body {
     background-color: #000;
 }
 
+/* Start Container  */
 .containter {
     font-family: 'Times New Roman', Times, serif;
     color: #333;
@@ -11,10 +24,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
     height: 80vh;
 }
 
+/* Start heading  */
+.heading {
+    margin-bottom: -5px;
+    color: #fff;
+    font-size: 20px;
+}
+
+/* Start timer text  */
 #timer {
     font-size: 35px;
 }
@@ -26,19 +47,12 @@ span {
     padding: 5px 10px;
 }
 
-.heading {
-    margin-bottom: -5px;
-    color: #fff;
-    font-size: 20px;
-}
-
+/* Start Selects element  */
 .selects {
     margin-top: -15px;
 }
 
-button {
-    cursor: pointer;
-}
+
 
 .selects select {
     padding: 2px 4px;
@@ -49,6 +63,11 @@ button {
 
 select,
 select option {
+    cursor: pointer;
+}
+
+/* Start buttons  */
+button {
     cursor: pointer;
 }
 
@@ -75,6 +94,34 @@ select:disabled {
     cursor: not-allowed;
 }
 
+/* Start .timerUpElem  */
+.timerUpElem {
+    display: none;
+    margin-top: 20px;
+    width: 90%;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.timerUpText {
+    font-size: 17px;
+    font: 500;
+    margin-bottom: 10px;
+}
+
+/* start stopTimer button  */
+.timerUpElem .stopTimerAudio {
+    width: 100%;
+    padding: 5px 12px;
+    border: none;
+    margin-bottom: 10;
+}
+
+.timerUpElem.active {
+    display: block;
+}
+
+/* Start responsiveness */
 @media (max-width:270) {
     .containter {
         width: 100%;
@@ -88,7 +135,7 @@ select:disabled {
         color: #fff;
         transition: .3s ease-in;
         border: 1px solid #333;
-        padding: 0 ;
+        padding: 0;
     }
 
     .heading {

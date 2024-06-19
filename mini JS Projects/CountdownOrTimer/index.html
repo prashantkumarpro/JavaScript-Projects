@@ -9,13 +9,19 @@
 </head>
 
 <body>
+    <!-- Counter for countdown/timer clock  -->
     <div class="containter">
-        <h1 class="heading">Countdown  timer</h1>
+        <!-- Heading  -->
+        <h1 class="heading">Countdown timer</h1>
+
+        <!-- Timer/Countdown text  -->
         <h1 id="timer">
             <span id="hrs">00h</span>
             <span id="min">00m</span>
             <span id="sec">00s</span>
         </h1>
+
+        <!-- Select the hours, minutes, and seconds  -->
         <div class="selects">
             <select id="hours-option">
                 <option value="" id="hours-elem">hours</option>
@@ -27,11 +33,18 @@
                 <option value="" id="seconds-elem">seconds</option>
             </select>
         </div>
+
+        <!-- Buttons for start and stop countdown  -->
         <div class="buttons">
             <button id="start">Start</button>
             <button id="cancel" disabled>Cancel</button>
         </div>
 
+        <!-- Card for timerUp/countdown time up -->
+        <div class="timerUpElem">
+            <p class="timerUpText">Timer done of 2sec</p>
+            <button class="stopTimerAudio">Stop</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

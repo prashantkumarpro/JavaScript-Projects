@@ -9,11 +9,14 @@ const minutesOptions = document.querySelector('#minutes-option');
 const minutesElem = document.querySelector('#minutes-elem');
 const secondsOptions = document.querySelector('#seconds-option');
 const secondsElem = document.querySelector('#seconds-elem');
-const startTimer = document.querySelector('#start')
-const cancelTimer = document.querySelector('#cancel')
+const startTimer = document.querySelector('#start');
+const cancelTimer = document.querySelector('#cancel');
+const timerUpElement = document.querySelector('.timerUpElem');
+const stopTimerAudioBtn = document.querySelector('.stopTimerAudio');
 let minutes, hours, seconds;
 let myInterval;
-
+let myAudio = new Audio('time_ups.mp3');
+myAudio.loop = false;
 // Get all select elements in the document and attach an input event listener to each one
 document.querySelectorAll('select')
     .forEach(selectedElem => {
@@ -63,61 +66,87 @@ function handelStopWatch() {
         alert('please select vaild time')
         return;
     }
-
-    if (hours >= 0 && minutes >= 0 && seconds >= 0) {
-
-        // interval for stop watch
-        myInterval = setInterval(() => {
-
-            if (seconds > 0) { // if seconds > 0 then seconds = seconds - 1
-                seconds--;
-                seconds = seconds < 10 ? "0" + seconds : seconds; // If seconds have only one digit, add a zero in front
-                secondsText.innerText = seconds;
-            } else if (minutes > 0 && seconds == 0) {
-                minutes--; // if minutes > 0 & seconds = 0 then minutes = minutes - 1
-                seconds = 59;
-                minutes = minutes < 10 ? "0" + minutes : minutes; // If minutes have only one digit, add a zero in front
-                minutesText.innerText = minutes;
-                secondsText.innerText = seconds;
-            } else if (hours > 0 && minutes == 0 && seconds == 0) {
-
-                hours--; // if hours is > 0 (1,2,...) & minutes = 0 & seconds = 0 then hours = hours - 1
-                hours = hours < 10 ? "0" + hours : hours;
-                seconds = 59; // replace the value of seconds 0 to 59
-                minutes = 59; // replace the value of minutes 0 to 59
-
-                // display the values of minutes, hours, and seconds
-                hoursText.innerText = hours;
-                minutesText.innerText = minutes
-                secondsText.innerText = seconds
-            } else {
-                seconds = secondsOptions.value;
-                secondsText.innerText = secondsOptions.value;
-                minutes = minutesOptions.value;
-                minutesText.innerText = minutesOptions.value;
-                hours = hoursOptions.value;
-                hoursText.innerText = hoursOptions.value;
-
-                alert('Time is up')
-                clearInterval(myInterval);
-                enable(startTimer);
-                disable(cancelTimer);
-                enable(minutesOptions);
-                enable(hoursOptions);
-                enable(secondsOptions);
-            }
-        }, 1000);
-
-        disable(hoursOptions)
-        disable(minutesOptions)
-        disable(secondsOptions)
-        disable(startTimer)
-        enable(cancelTimer)
+    if (minutes == 0 && hours == 0 && seconds == 0) {
+        alert('please select vaild time')
+        return;
     }
 
+    // interval for countwodn timer
+    myInterval = setInterval(() => {
 
+        if (seconds > 0) { // if seconds > 0 then seconds = seconds - 1
+            seconds--;
+            seconds = seconds < 10 ? "0" + seconds : seconds; // If seconds have only one digit, add a zero in front
+            secondsText.innerText = seconds;
+        } else if (minutes > 0 && seconds == 0) {
+            minutes--; // if minutes > 0 & seconds = 0 then minutes = minutes - 1
+            seconds = 59;
+            minutes = minutes < 10 ? "0" + minutes : minutes; // If minutes have only one digit, add a zero in front
+            minutesText.innerText = minutes;
+            secondsText.innerText = seconds;
+        } else if (hours > 0 && minutes == 0 && seconds == 0) {
+
+            hours--; // if hours is > 0 (1,2,...) & minutes = 0 & seconds = 0 then hours = hours - 1
+            hours = hours < 10 ? "0" + hours : hours;
+            seconds = 59; // replace the value of seconds 0 to 59
+            minutes = 59; // replace the value of minutes 0 to 59
+
+            // display the values of minutes, hours, and seconds
+            hoursText.innerText = hours;
+            minutesText.innerText = minutes
+            secondsText.innerText = seconds
+        } else {
+
+            seconds = secondsOptions.value;
+            secondsText.innerText = secondsOptions.value;
+            minutes = minutesOptions.value;
+            minutesText.innerText = minutesOptions.value;
+            hours = hoursOptions.value;
+            hoursText.innerText = hoursOptions.value;
+            clearInterval(myInterval);
+            playAudio()
+            enable(startTimer);
+            disable(cancelTimer);
+            enable(minutesOptions);
+            enable(hoursOptions);
+            enable(secondsOptions);
+        }
+    }, 1000);
+
+    disable(hoursOptions)
+    disable(minutesOptions)
+    disable(secondsOptions)
+    disable(startTimer)
+    enable(cancelTimer)
 }
 
+
+
+
+// Function to play the audio when time is up
+function playAudio() {
+    hours = hours > 0 ? hours + "hr" : ''
+    minutes = minutes > 0 ? minutes + "min" : ''
+    seconds = seconds > 0 ? seconds + "sec" : ''
+    console.log(hours, minutes, seconds)
+    const timerUpText = document.querySelector('.timerUpText');
+    timerUpText.innerText = `Timer is done of ${hours} ${minutes} ${seconds}`
+    timerUpElement.classList.add('active')
+    myAudio.play()
+    myAudio.loop = true;
+}
+
+// Function to stop the audio when the stop button of timerUp's Element abutton clicked
+function stopAudio() {
+    timerUpElement.classList.remove('active');
+    myAudio.pause()
+    myAudio.currentTime = 0; // Reset audio to the beginning
+    hours = hoursOptions.value;
+    minutes = minutesOptions.value;
+    seconds = secondsOptions.value;
+}
+
+stopTimerAudioBtn.addEventListener('click', stopAudio)
 // Function to disable the element 
 function disable(element) {
     element.disabled = true;
@@ -146,16 +175,7 @@ function handelcancelTimer() {
     hours = hoursOptions.value;
     hoursText.innerText = hoursOptions.value;
 
-    // // update the text of hours, minutes, and seconds
-    // hoursText.innerText = 'Hrs';
-    // minutesText.innerText = 'Min';
-    // secondsText.innerText = 'Sec';
-    // // update the value of selects
-    // hoursOptions.selectedIndex = 0;
-    // minutesOptions.selectedIndex = 0;
-    // secondsOptions.selectedIndex = 0;
-
-
+    // enable the selects
     enable(minutesOptions);
     enable(hoursOptions);
     enable(secondsOptions);
