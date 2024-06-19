@@ -32,10 +32,13 @@ nav {
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    flex-direction: row;
     font-size: 15px;
     padding: 0 30px;
     background-color: #7EB5EA;
+    flex-wrap: wrap;
+    color: #333;
 }
 
 nav>h3 {
@@ -91,7 +94,9 @@ h3:hover {
     height: 100%;
     font-size: 20px;
 }
-
+.dropdown-content.active{
+    display: block;
+}
 
 a span i {
     font-weight: 700;

@@ -63,7 +63,7 @@
                     <a href="#option3">Option 3 <span><i class="ri-arrow-right-s-fill"></i></span></a>
                 </div>
             </div>
-            <h3 class="nav-link">Technical Supoort</h3>
+            <h3 class="nav-link technical-supoort">Technical Supoort</h3>
             <h3 class="nav-link">FAQ</h3>
             <h3 class="nav-link">About us</h3>
             <h3 class="nav-link">Contact Us</h3>
@@ -74,20 +74,28 @@
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
         const dropdownContents = document.querySelectorAll('.dropdown-content');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
+        navLinks.forEach(navLink => {
+            navLink.addEventListener('click', function (e) {
 
-                navLinks.forEach(link => link.classList.remove('active'))
-                e.target.classList.add('active')
+                // remove the active class from every link
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
 
-                let nextElementSibling = e.target.nextElementSibling
-                if (e.target.nextElementSibling.classList.contains('dropdown-content')) {
-                    dropdownContents.forEach(dropdownContent => dropdownContent.style.display = 'none')
-                    nextElementSibling.style.display = 'block'
-                    console.log(nextElementSibling)
-                    console.log('yes contains')
-                } else {
-                    document.querySelector('.report-section').style.display = 'none'
+                // Add the active class to the targeted link
+                e.target.classList.add('active');
+
+                // Hide all dropdown contents
+                dropdownContents.forEach(dropdownContent => dropdownContent.classList.remove('active'))
+
+                if (e.target.nextElementSibling && e.target.nextElementSibling.classList.contains('dropdown-content')) {
+                    e.target.nextElementSibling.classList.add('active')
+                }
+
+                // Specific condition for technical support
+                if (e.target.classList.contains('technical-supoort') && e.target.previousElementSibling.children[1]) {
+                    const previousDropdownContent = e.target.previousElementSibling.querySelector('.dropdown-content');
+                    if (previousDropdownContent) {
+                        previousDropdownContent.classList.remove('active');
+                    }
                 }
             })
         })
