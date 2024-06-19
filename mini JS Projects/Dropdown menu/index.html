@@ -93,6 +93,7 @@
                 // Specific condition for technical support
                 if (e.target.classList.contains('technical-supoort') && e.target.previousElementSibling.children[1]) {
                     const previousDropdownContent = e.target.previousElementSibling.querySelector('.dropdown-content');
+                    // console.log(previousDropdownContent)
                     if (previousDropdownContent) {
                         previousDropdownContent.classList.remove('active');
                     }
