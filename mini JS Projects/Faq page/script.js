@@ -8,7 +8,7 @@ const sections = document.querySelectorAll('.section')
 
                 if (contentElem.classList.contains('active')) {
                     contentElem.classList.remove('active')
-                    contentElem.style.maxHeight = 0;
+                    contentElem.style.maxHeight = null;
                     signElem.innerText = '+'
                 } else {
                     contentElem.classList.add('active')
