@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        padding: 2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: linear-gradient(to right, red, green);
+    }
+
+    h1 {
+
+        font-size: 3rem;
+    }
+
+    .inputBoxes {
+        margin: 20px 0;
+    }
+
+    input {
+        cursor: pointer;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+    }
+</style>
+
+<body>
+    <h1>Background Changer</h1>
+    <div class="inputBoxes">
+        <input type="color" name="red" id="red" value="#ff0000">
+        <input type="color" name="green" id="green" value="#00ff00">
+    </div>
+    <p class="color_text">linear-gradient(to right, #ff0000, #00ff00)</p>
+
+    <script>
+        const redBox = document.querySelector('#red');
+        const greenBox = document.querySelector('#green')
+        const colorText = document.querySelector('p');
+
+
+        redBox.addEventListener('input', function () {
+            document.body.style.background = `linear-gradient(to right, ${this.value}, ${greenBox.value})`;
+            colorText.innerText = `linear-gradient(to right, ${this.value}, ${greenBox.value})`
+            if (this.value === "#000000") {
+                document.querySelector('h1').style.color = '#ffffff';
+            }
+        })
+
+        greenBox.addEventListener('input', function () {
+            console.log("greenBox:", this.value)
+            document.body.style.background = `linear-gradient(to right, ${this.value}, ${redBox.value})`;
+            colorText.innerText = `linear-gradient(to right, ${this.value}, ${redBox.value})`
+        })
+    </script>
+
+</body>
+
+</html>
