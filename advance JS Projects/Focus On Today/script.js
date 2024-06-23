@@ -2,12 +2,21 @@ const taskContainer = document.querySelector('.task_container');
 const inputElement = document.querySelector('input[type="text"]');
 const addTaskButton = document.querySelector('#addTask')
 let inputElementValue;
-let submitTaskBtn;
+let localDataArr =[] 
 
+let getDataArr = JSON.parse(localStorage.getItem("items"));
+
+if(getDataArr){
+    console.log(getDataArr)
+   
+}
 // event listener to get typed input val 
 inputElement.addEventListener('input', function () {
     inputElementValue = this.value;
+    enabled(addTaskButton)
+   
 })
+
 
 // Function to disable button
 function disabled(elem) {
@@ -26,7 +35,13 @@ function addTheTask() {
         alert('enter the task')
         return
     } else {
+
+        // store the task in localDataArr
+        localDataArr.push(inputElementValue)    
+        const localStoredData = localStorage.setItem("items", JSON.stringify(localDataArr));
+
         displayTheTask()
+
         // Clear the input box
         inputElement.value = ''
     }
@@ -47,14 +62,13 @@ function displayTheTask() {
     let iconsDiv = document.createElement('div');
     iconsDiv.classList.add('icons');
 
-
-    // Create span for edit button 
-    let editButton = document.createElement('span');
+    // Create  edit button 
+    let editButton = document.createElement('button');
     editButton.classList.add('edit');
     editButton.textContent = 'Edit'
 
-    // Create span for delete button 
-    let deleteButton = document.createElement('span');
+    // Create  delete button 
+    let deleteButton = document.createElement('button');
     deleteButton.classList.add('delete');
     deleteButton.textContent = 'Delete'
 
@@ -65,31 +79,26 @@ function displayTheTask() {
     iconsDiv.append(deleteButton)
     taskContainer.append(taskDiv)
 
-
-
-
+   
     // Function to the edit task
     function editTheTask() {
 
         if (this.classList.contains('edit')) {
             inputElement.value = this.parentElement.parentElement.children[0].textContent;
-            this.classList.remove('edit')
-            this.classList.add('submit');
-            this.textContent = 'Submit'
-
-            disabled(deleteButton)
-            disabled(addTaskButton)
-
+            this.classList.remove('edit');
+            this.classList.add('update');
+            this.textContent = 'Update';
+            inputElement.focus()
+            disabled(deleteButton);
+            disabled(addTaskButton);
         } else {
             this.parentElement.parentElement.children[0].textContent = inputElementValue;
-            this.classList.remove('submit')
+            this.classList.remove('update')
             this.classList.add('edit');
-            this.textContent = 'Edit'
-
-            inputElement.value = ''
-            enabled(deleteButton)
-            enabled(addTaskButton)
-
+            this.textContent = 'Edit';
+            inputElement.value = '';
+            enabled(deleteButton);
+            enabled(addTaskButton);
         }
     }
 

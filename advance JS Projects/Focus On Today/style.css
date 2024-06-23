@@ -67,14 +67,33 @@ input[type="text"] {
     width: 100%;
     padding: 15px 20px;
     margin: 0 auto;
-    background-color: rgb(22, 12, 19);
+    background-color: rgb(47, 36, 20);
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-.task.completed{
-    text-decoration:line-through;
+
+.task.completed {
+    text-decoration: line-through;
 }
 
 .task_box .icons span {
     margin-left: 10px;
     cursor: pointer;
+}
+
+
+button:disabled {
+    cursor: not-allowed;
+    background: #dddddd
+}
+
+button {
+    cursor: pointer;
+    padding: 8px 12px;
+    color: #333;
+    background-color: aliceblue;
+    border: none;
+    outline: none;
+    margin-left: 5px;
 }
