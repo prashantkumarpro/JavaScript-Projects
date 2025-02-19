@@ -22,7 +22,7 @@ searchName.addEventListener('input', (e) => {
     }
 
     const filterdFruit = fruitsNames.filter(item => item.toLowerCase().includes(inputVal))
-    for (let index = 0; index < fruitsNames.length; index++) {
+    for (let index = 0; index < fruitsNames.length; index++) {  
 
         if (filterdFruit.includes(fruitsNames[index])) {
             boxElements[index].style.display = '';
