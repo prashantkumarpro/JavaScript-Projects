@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List...</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json" />
     <script src="script.js" defer></script>
 </head>
 
@@ -15,12 +16,23 @@
         <div class="input_box">
             <input type="text" placeholder="Enter the task...">
             <button id="addTask" disabled>Add</button>
+            <div id="install_container" hidden>
+                <div class="App_heading">
+                    <div class="icon">✅ ToDo List App</div>
+                    <div id="install">Install</div>
+                    <div id="close">X</div>
+                </div>
+                <p>Effortlessly track and manage your tasks with our intuitive ToDo List app</p>
+            </div>
         </div>
+
     </header>
 
     <div class="task_container">
 
     </div>
+
+
 
 </body>
 

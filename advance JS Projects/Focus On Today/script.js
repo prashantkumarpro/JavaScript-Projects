@@ -2,11 +2,37 @@ const taskContainer = document.querySelector('.task_container');
 const inputElement = document.querySelector('input[type="text"]');
 const addTaskButton = document.querySelector('#addTask')
 
+let installPrompt = null;
+const installButton = document.querySelector('#install');
+const installContainer = document.querySelector('#install_container');
+const closeBtn = document.querySelector('#close');
+
+window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    installContainer.removeAttribute("hidden");
+});
+
+
+installButton.addEventListener("click", async () => {
+    if (!installPrompt) {
+        return;
+    }
+    const result = await installPrompt.prompt();
+    console.log(`Install prompt was: ${result.outcome}`);
+    installPrompt = null;
+    installContainer.setAttribute("hidden", "");
+});
+
+
+closeBtn.addEventListener('click', function () {
+    installContainer.setAttribute("hidden", "");
+})
 
 // Retrieve existing task or initialize an empty array
 let taskArray = JSON.parse(localStorage.getItem("items")) || [];
 
-taskArray.forEach(taskText => displayTheTask(taskText));
+taskArray.forEach(task => displayTheTask(task));
 
 // event listener to get typed input value 
 inputElement.addEventListener('input', function () {
@@ -21,11 +47,13 @@ function addTheTask() {
         return
     } else {
         let taskText = inputElement.value.trim()
+        let taskObj = { text: taskText, completedTask: '' }
+
         // Display the task 
-        displayTheTask(taskText)
+        displayTheTask(taskObj)
 
         // Add new task to the taskArray
-        taskArray.push(taskText);
+        taskArray.push(taskObj);
 
         // Save the updated taskArray
         localStorage.setItem("items", JSON.stringify(taskArray));
@@ -36,7 +64,7 @@ function addTheTask() {
 }
 
 // Function to display the task
-function displayTheTask(taskText) {
+function displayTheTask(taskObj) {
     // create the task div
     let taskDiv = document.createElement('div');
     taskDiv.classList.add('task_box');
@@ -44,7 +72,8 @@ function displayTheTask(taskText) {
     // Create task text element 
     let taskTextElement = document.createElement('p');
     taskTextElement.classList.add('task-text');
-    taskTextElement.textContent = taskText;
+    taskTextElement.textContent = taskObj.text;
+    if (taskObj.completedTask === 'task-completed') taskTextElement.classList.add(taskObj.completedTask);
 
     // Create icon div
     let iconsDiv = document.createElement('div');
@@ -67,9 +96,19 @@ function displayTheTask(taskText) {
     iconsDiv.append(deleteButton)
     taskContainer.append(taskDiv);
 
+
     // when doubble click on task this will show as the task is completed
     taskDiv.addEventListener('dblclick', function () {
-        taskTextElement.classList.toggle('task-completed');
+        const taskTextElement = this.children[0];
+        if (!taskTextElement.classList.contains('task-completed')) {
+            taskTextElement.classList.add('task-completed')
+            taskObj.completedTask = 'task-completed'
+            localStorage.setItem('items', JSON.stringify(taskArray))
+        } else {
+            taskTextElement.classList.remove('task-completed')
+            taskObj.completedTask = ''
+            localStorage.setItem('items', JSON.stringify(taskArray))
+        }
     })
 
     // Function to the edit task
@@ -86,12 +125,13 @@ function displayTheTask(taskText) {
         } else if (editButton.classList.contains('update')) {
             let updateElem = editButton.parentElement.parentElement.children[0];
 
-            let index = taskArray.indexOf(updateElem.textContent);
-            taskArray[index] = inputElement.value.trim();
-            let updatedText = taskArray[index]
+            taskArray.forEach(task => {
+                if (task.text === updateElem.textContent) {
+                    task.text = inputElement.value;
+                    updateElem.textContent = task.text;
+                }
+            })
 
-            // update the text
-            updateElem.textContent = updatedText;
 
             // Save the updated text inside the taskArray
             localStorage.setItem('items', JSON.stringify(taskArray))
@@ -112,7 +152,7 @@ function displayTheTask(taskText) {
         let taskText = this.parentElement.previousSibling.textContent
 
         // remove the task from taskArray
-        let deletedTask = taskArray.filter(item => item !== taskText)
+        let deletedTask = taskArray.filter(item => item.text !== taskText)
         taskArray = deletedTask;
 
         // save the updated task
@@ -137,3 +177,6 @@ function enabled(elem) {
 
 //  Event listener on add button  on click
 addTaskButton.addEventListener('click', addTheTask)
+
+
+

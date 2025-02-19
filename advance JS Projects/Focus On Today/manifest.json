@@ -1,0 +1,13 @@
+{
+    "name": "To Do List app",
+    "short_name": "ToDoList",
+    "start_url" : "/",
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "512x512"
+      }
+    ],
+    "display": "standalone"
+  }
+  
