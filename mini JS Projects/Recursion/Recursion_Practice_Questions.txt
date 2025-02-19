@@ -1,0 +1,71 @@
+Recursion Practice Questions in JavaScript
+1. Sum of Numbers
+Write a recursive function sumRange(startNum, endNum) that returns the sum of all integers between startNum and endNum (inclusive).
+Example:
+sumRange(1, 5); // 1 + 2 + 3 + 4 + 5 = 15
+sumRange(3, 7); // 3 + 4 + 5 + 6 + 7 = 25
+
+2. Factorial
+Write a recursive function factorial(n) that returns the factorial of a number n.
+Example:
+factorial(5); // 5 * 4 * 3 * 2 * 1 = 120
+factorial(6); // 6 * 5 * 4 * 3 * 2 * 1 = 720
+
+3. Fibonacci Sequence
+Write a recursive function fibonacci(n) that returns the n-th number in the Fibonacci sequence. The Fibonacci sequence is defined as:
+- fibonacci(0) = 0
+- fibonacci(1) = 1
+- fibonacci(n) = fibonacci(n - 1) + fibonacci(n - 2) for n >= 2
+Example:
+fibonacci(5); // 5 (0, 1, 1, 2, 3, 5)
+fibonacci(7); // 13 (0, 1, 1, 2, 3, 5, 8, 13)
+
+4. Reverse a String
+Write a recursive function reverseString(str) that reverses a string.
+Example:
+reverseString('hello'); // 'olleh'
+reverseString('world'); // 'dlrow'
+
+5. Sum of Digits
+Write a recursive function sumOfDigits(num) that returns the sum of the digits of a number.
+Example:
+sumOfDigits(123); // 1 + 2 + 3 = 6
+sumOfDigits(4567); // 4 + 5 + 6 + 7 = 22
+
+6. Check if a String is a Palindrome
+Write a recursive function isPalindrome(str) that checks if a string is a palindrome (reads the same forward and backward).
+Example:
+isPalindrome('racecar'); // true
+isPalindrome('hello'); // false
+
+7. Find Maximum Element in an Array
+Write a recursive function findMax(arr) that returns the largest number in an array.
+Example:
+findMax([1, 5, 3, 9, 2]); // 9
+findMax([12, 34, 45, 23, 56]); // 56
+
+8. Flatten an Array
+Write a recursive function flatten(arr) that flattens a nested array.
+Example:
+flatten([1, [2, [3, [4]], 5]]); // [1, 2, 3, 4, 5]
+flatten([1, [2, 3], 4, [5, [6]]]); // [1, 2, 3, 4, 5, 6]
+
+9. Count Down
+Write a recursive function countdown(n) that prints numbers from n down to 1, then prints 'Blast off!' when it reaches 0.
+Example:
+countdown(5); 
+// Output:
+// 5
+// 4
+// 3
+// 2
+// 1
+// Blast off!
+
+10. Power of a Number
+Write a recursive function power(base, exponent) that returns the result of raising base to the power of exponent.
+Example:
+power(2, 3); // 8 (2 * 2 * 2)
+power(5, 4); // 625 (5 * 5 * 5 * 5)
+
+

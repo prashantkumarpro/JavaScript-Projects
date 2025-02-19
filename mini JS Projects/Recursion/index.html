@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>What is Recursion?</h1>
+
+
+    <p>Recursion means a function calling itself until it solves a smaller, simpler problem. Imagine you're asking
+        someone for help, and they keep asking others until they reach someone who knows the answer. Once the answer is
+        found, they all pass it back up to you.</p>
+
+    <h2>Steps for Recursion:</h2>
+    <ol>
+        <li><strong>Base Case:</strong> The simplest situation where we stop asking for help (the function stops calling
+            itself).</li>
+        <li><strong>Recursive Case:</strong> The case where the function calls itself again with a simpler version of
+            the problem.</li>
+    </ol>
+
+    <h2>Example: Countdown</h2>
+    <p>Let's say we want to count down from a number to 1.</p>
+
+    <pre><code>
+function countdown(n) {
+  // Base case: stop when n is 0
+  if (n === 0) {
+    console.log("Done!");
+    return;
+  }
+  // Recursive case: keep calling the function
+  console.log(n);
+  countdown(n - 1); // Call the function with n - 1
+}
+
+countdown(5);
+  </code></pre>
+
+    <h3>How It Works:</h3>
+    <p><strong>Base Case:</strong> If <code>n</code> is 0, the function stops and prints "Done!"</p>
+    <p><strong>Recursive Case:</strong> If <code>n</code> is greater than 0, it prints the number and then calls itself
+        with <code>n - 1</code>.</p>
+
+    <p>When you call <code>countdown(5)</code>, it works like this:</p>
+    <ul>
+        <li><code>countdown(5)</code> prints 5 and calls <code>countdown(4)</code></li>
+        <li><code>countdown(4)</code> prints 4 and calls <code>countdown(3)</code></li>
+        <li><code>countdown(3)</code> prints 3 and calls <code>countdown(2)</code></li>
+        <li><code>countdown(2)</code> prints 2 and calls <code>countdown(1)</code></li>
+        <li><code>countdown(1)</code> prints 1 and calls <code>countdown(0)</code></li>
+        <li><code>countdown(0)</code> hits the base case and prints "Done!"</li>
+    </ul>
+
+    <h2>Recap:</h2>
+    <ul>
+        <li><strong>Recursion</strong> means a function keeps calling itself until it reaches a base case.</li>
+        <li><strong>Base Case</strong> is the condition where the recursion stops.</li>
+        <li><strong>Recursive Case</strong> is where the function keeps calling itself with a smaller or simpler
+            problem.</li>
+    </ul>
+    <script>
+        // "use strict";
+        // function countDown(num) {
+        //     // Base case
+        //     if (num === 0) {
+        //         console.log('done')
+        //         return;
+        //     }
+        //     console.log(num)
+        //     return countDown(num - 1)
+        // }
+        // countDown(5)
+
+        //         1. Sum of Numbers
+        // Write a recursive function sumRange(startNum, endNum) that returns the sum of all integers between startNum and endNum(inclusive).
+        //             Example:
+        //         sumRange(1, 5); // 1 + 2 + 3 + 4 + 5 = 15
+        //         sumRange(3, 7); // 3 + 4 + 5 + 6 + 7 = 25
+
+
+        function sumRange(startNum, endNum) {
+            // Base case
+            if (startNum === endNum) {
+                return startNum;
+            }
+
+            // Recursive case
+            return startNum + sumRange(startNum + 1, endNum)
+        }
+        // console.log(sumRange(1, 5))
+
+
+        function factorial(n) {
+            if (n === 1) {
+                return 1
+            }
+            if (n === 0) {
+                return 0;
+            }
+            return n * factorial(n - 1)
+        }
+        // console.log(factorial(0))//0
+        // console.log(factorial(4))//24
+        // console.log(factorial(6))//720
+
+
+        function reverseString(str) {
+
+        }
+
+        //5. Sum of Digits
+        function sumOfDigits(digits) {
+            // Base case 
+            if (digits < 10) {
+                return digits;
+            }
+
+            // Recursive case
+            let digitsStr = String(digits).split('')
+            return digitsStr
+        }
+
+        console.log(sumOfDigits(18520))
+
+    </script>
+</body>
+
+</html>
