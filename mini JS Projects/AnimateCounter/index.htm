@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate Counter</title>
+</head>
+
+<style>
+    /* Stats Section */
+    .stats {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 20px 0;
+        border-bottom: 2px solid #0073ff;
+    }
+
+    .stats h4 {
+        text-align: center;
+        margin: 10px 0;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .stats .number {
+        font-size: 54px;
+        color: #0023B5;
+        font-weight: bold;
+        letter-spacing: 4px;
+        line-height: 0;
+    }
+</style>
+
+<body>
+    <div class="stats">
+        <div>
+            <h4>Jobs Posted</h4>
+            <p class="number" id="job_posted">0</p>
+        </div>
+        <div>
+            <h4>Jobs Filled</h4>
+            <p class="number" id="job_fileds">0</p>
+        </div>
+        <div>
+            <h4>Employers</h4>
+            <p class="number" id="employers">0</p>
+        </div>
+        <div>
+            <h4>Active Users</h4>
+            <p class="number" id="active_user">0</p>
+        </div>
+    </div>
+<script src="script.js"></script>
+
+</body>
+
+</html>
