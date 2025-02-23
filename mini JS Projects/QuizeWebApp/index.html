@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>indexedDB in JavaScript</h1>
+    <div class="quiz-container">
+        <div class="header"> 
+            <a class="attempt_link" href="attempt.html">👉 Attempted</a>
+            <p class="timer">⏳ Time Left: <span id="time-left">30</span>s</p>
+        </div>
+        <h2 id="question"></h2>
+        <ul id="options"></ul>
+        <p id="feedback"></p>
+    </div>
 
 
     <!-- Load the scripts in proper order -->
