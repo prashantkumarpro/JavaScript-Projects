@@ -86,6 +86,8 @@ DBopenRequest.onupgradeneeded = event => {
 
   objectStore.createIndex('score', 'score', { unique: true })
   objectStore.createIndex('time', 'time', { unique: false })
+
+  console.log(objectStore)
 }
 
 function DBfeat(){
