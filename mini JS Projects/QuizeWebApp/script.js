@@ -104,3 +104,14 @@ request.onsuccess = function () {
 request.onerror = function () {
   console.log('Error', request.error)
 }
+
+function DFfeat2(){
+  console.log("this is nwe DB feat2")
+  console.log("this is nwe DB feat2 again")
+}
+function DFfeat3(){
+  console.log("this is nwe DB feat3")
+  console.log("this is nwe DB feat3 again")
+  console.log("this is nwe DB feat3 again a")
+  console.log("this is nwe DB feat3 again c")
+}
