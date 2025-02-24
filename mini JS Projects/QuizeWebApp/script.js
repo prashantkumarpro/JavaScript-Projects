@@ -59,7 +59,7 @@ showQuestion()
 let db
 
 // Open the IndexedDB database
-const DBopenRequest = indexedDB.open('QuizDB', 4)
+const DBopenRequest = indexedDB.open('attempts', 1)
 
 DBopenRequest.onerror = event => {
   console.log('Error loading IndexedDB', event)
@@ -71,26 +71,36 @@ DBopenRequest.onsuccess = event => {
 }
 
 // This event runs only when the database is newly created or upgraded
-DBopenRequest.onupgradeneeded = event => {
+DBopenRequest.onupgradeneeded = function (event) {
   db = event.target.result
 
   db.onerror = event => {
     console.log('Error loading IndexedDB', event)
   }
 
-  // Create an objectStore for this database
-  const objectStore = db.createObjectStore('store', {
-    keyPath: 'di',
-    autoIncrement: true
-  })
-
-  objectStore.createIndex('score', 'score', { unique: true })
-  objectStore.createIndex('time', 'time', { unique: false })
-
-  console.log(objectStore)
+  if (!db.objectStoreNames.contains('attepmts')) {
+    // If ther's no "attmpts" store
+    db.createObjectStore('attempts', {
+      keyPath: 'id',
+      autoIncrement: true
+    }) // create it
+  }
 }
 
-function DBfeat(){
-  console.log("this is new DB feat")
-  console.log("this is new DB feat again")
+let transaction = db.transaction('attempts', 'readwrite')
+
+// get an object store to operate on it
+let attempts = transaction.objectStore('attempts')
+
+let attempt = {
+  id: new Date(),
+  score: score
+}
+
+let request = attempts.add(attempt)
+request.onsuccess = function () {
+  console.log('attempt added to the sotre')
+}
+request.onerror = function () {
+  console.log('Error', request.error)
 }
