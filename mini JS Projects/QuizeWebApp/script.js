@@ -90,4 +90,5 @@ DBopenRequest.onupgradeneeded = event => {
 
 function DBfeat(){
   console.log("this is new DB feat")
+  console.log("this is new DB feat again")
 }
