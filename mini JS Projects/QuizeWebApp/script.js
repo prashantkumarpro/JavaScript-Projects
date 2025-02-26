@@ -1,10 +1,12 @@
 import quizQuestions from './data.js' // Import the quiz data
 
-let currentQuestion = 0
+export let currentQuestion = 0
 let score = 0
 let timeLeft = 30
 let timer
+let fetchedData = []
 
+// show the quesiton on UI
 function showQuestion () {
   document.getElementById(
     'question'
@@ -20,6 +22,7 @@ function showQuestion () {
   resetTimer()
 }
 
+// function for check answer
 function checkAnswer (option, li) {
   if (option === quizQuestions[currentQuestion].correctAns) {
     li.classList.add('correct')
@@ -28,18 +31,22 @@ function checkAnswer (option, li) {
     li.classList.add('wrong')
   }
   clearTimeout(timer)
-  setTimeout(nextQuestion, 1000)
+  setTimeout(nextQuestion, 500)
 }
 
+// function for next question
 function nextQuestion () {
   if (currentQuestion + 1 < quizQuestions.length) {
     currentQuestion++
     showQuestion()
   } else {
-    alert(`Quiz Over! Your Score: ${score}/${quizQuestions.length}`)
+    addAttempt(score)
+    console.log(`Quiz Over! Your Score: ${score}/${quizQuestions.length}`)
+    location.href = 'attempt.html'
   }
 }
 
+// reset tihe timer
 function resetTimer () {
   timeLeft = 30
   document.getElementById('time-left').textContent = timeLeft
@@ -54,12 +61,27 @@ function resetTimer () {
   }, 1000)
 }
 
+// show the result on quiz end
+
 showQuestion()
 
 let db
 
 // Open the IndexedDB database
-const DBopenRequest = indexedDB.open('attempts', 1)
+const DBopenRequest = indexedDB.open('attemptsHistory', 1)
+
+// This event runs only when the database is newly created or upgraded
+DBopenRequest.onupgradeneeded = function () {
+  db = DBopenRequest.result
+
+  if (!db.objectStoreNames.contains('attemptsHistory')) {
+    // If ther's no "attmpts" store
+    db.createObjectStore('attemptsHistory', {
+      keyPath: 'id',
+      autoIncrement: true
+    }) // create it
+  }
+}
 
 DBopenRequest.onerror = event => {
   console.log('Error loading IndexedDB', event)
@@ -67,41 +89,38 @@ DBopenRequest.onerror = event => {
 
 DBopenRequest.onsuccess = event => {
   db = event.target.result
+  if (score !== undefined) {
+    addAttempt(score)
+  } else {
+    addAttempt((score = 0))
+  }
   console.log('IndexedDB is running now', db)
 }
 
-// This event runs only when the database is newly created or upgraded
-DBopenRequest.onupgradeneeded = function (event) {
-  db = event.target.result
-
-  db.onerror = event => {
-    console.log('Error loading IndexedDB', event)
+function addAttempt (finalScore) {
+  const attempt = {
+    score: finalScore,
+    id: new Date().toLocaleTimeString()
   }
+  const tx = db.transaction('attemptsHistory', 'readwrite')
+  const store = tx.objectStore('attemptsHistory')
+  store.add(attempt)
 
-  if (!db.objectStoreNames.contains('attepmts')) {
-    // If ther's no "attmpts" store
-    db.createObjectStore('attempts', {
-      keyPath: 'id',
-      autoIncrement: true
-    }) // create it
+  // when the transcation is complete, fetch all update again to update the UI
+  tx.oncomplete = () => {
+    fetchAttempts(db)
+    console.log('All done!')
   }
 }
 
-let transaction = db.transaction('attempts', 'readwrite')
+// Function to fetch all past attempts from IndexedDB
+const fetchAttempts = db => {
+  const transaction = db.transaction('attemptsHistory', 'readonly')
+  const store = transaction.objectStore('attemptsHistory')
+  const getAllRequest = store.getAll()
 
-// get an object store to operate on it
-let attempts = transaction.objectStore('attempts')
-
-let attempt = {
-  id: new Date(),
-  score: score
+  // When data is retrieved successfully, update the attempts state
+  getAllRequest.onsuccess = () => {
+    fetchedData = getAllRequest.result
+  }
 }
-
-let request = attempts.add(attempt)
-request.onsuccess = function () {
-  console.log('attempt added to the sotre')
-}
-request.onerror = function () {
-  console.log('Error', request.error)
-}
-
