@@ -4,7 +4,7 @@ export let currentQuestion = 0
 let score = 0
 let timeLeft = 30
 let timer
-let fetchedData = []
+let db
 
 // show the quesiton on UI
 function showQuestion () {
@@ -40,8 +40,9 @@ function nextQuestion () {
     currentQuestion++
     showQuestion()
   } else {
-    addAttempt(score)
-    console.log(`Quiz Over! Your Score: ${score}/${quizQuestions.length}`)
+    if (score > 0) {
+      addAttempt(score)
+    }
     location.href = 'attempt.html'
   }
 }
@@ -51,6 +52,7 @@ function resetTimer () {
   timeLeft = 30
   document.getElementById('time-left').textContent = timeLeft
   clearInterval(timer)
+
   timer = setInterval(() => {
     timeLeft--
     document.getElementById('time-left').textContent = timeLeft
@@ -61,12 +63,6 @@ function resetTimer () {
   }, 1000)
 }
 
-// show the result on quiz end
-
-showQuestion()
-
-let db
-
 // Open the IndexedDB database
 const DBopenRequest = indexedDB.open('attemptsHistory', 1)
 
@@ -75,11 +71,11 @@ DBopenRequest.onupgradeneeded = function () {
   db = DBopenRequest.result
 
   if (!db.objectStoreNames.contains('attemptsHistory')) {
-    // If ther's no "attmpts" store
+    // If ther's no "attmpts" store create it
     db.createObjectStore('attemptsHistory', {
       keyPath: 'id',
       autoIncrement: true
-    }) // create it
+    })
   }
 }
 
@@ -89,15 +85,14 @@ DBopenRequest.onerror = event => {
 
 DBopenRequest.onsuccess = event => {
   db = event.target.result
-  if (score !== undefined) {
-    addAttempt(score)
-  } else {
-    addAttempt((score = 0))
-  }
-  console.log('IndexedDB is running now', db)
+  // console.log('IndexedDB is running now', db)
 }
 
 function addAttempt (finalScore) {
+  if (!db) {
+    console.log('Database is not initialized yet.')
+    return
+  }
   const attempt = {
     score: finalScore,
     id: new Date().toLocaleTimeString()
@@ -106,21 +101,8 @@ function addAttempt (finalScore) {
   const store = tx.objectStore('attemptsHistory')
   store.add(attempt)
 
-  // when the transcation is complete, fetch all update again to update the UI
-  tx.oncomplete = () => {
-    fetchAttempts(db)
-    console.log('All done!')
-  }
+  tx.oncomplete = () => console.log('Attempt added successfully.')
+  tx.onerror = () => console.error('Error adding attempt.')
 }
 
-// Function to fetch all past attempts from IndexedDB
-const fetchAttempts = db => {
-  const transaction = db.transaction('attemptsHistory', 'readonly')
-  const store = transaction.objectStore('attemptsHistory')
-  const getAllRequest = store.getAll()
-
-  // When data is retrieved successfully, update the attempts state
-  getAllRequest.onsuccess = () => {
-    fetchedData = getAllRequest.result
-  }
-}
+showQuestion()
