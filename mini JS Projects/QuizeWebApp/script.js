@@ -1,16 +1,17 @@
-import quizQuestions from './data.js' // Import the quiz data
+import quizQuestions from './data.js' // Imported the quiz data
 
 export let currentQuestion = 0
 let score = 0
 let timeLeft = 30
 let timer
+let questionNum = 0
 let db
 
 // show the quesiton on UI
 function showQuestion () {
-  document.getElementById(
-    'question'
-  ).textContent = `${quizQuestions[currentQuestion].Qns}👇`
+  document.getElementById('question').textContent = `${questionNum + 1}. ${
+    quizQuestions[currentQuestion].Qns
+  }👇`
   const optionsList = document.getElementById('options')
   optionsList.innerHTML = ''
   quizQuestions[currentQuestion].options.forEach(option => {
@@ -38,6 +39,7 @@ function checkAnswer (option, li) {
 function nextQuestion () {
   if (currentQuestion + 1 < quizQuestions.length) {
     currentQuestion++
+    questionNum++
     showQuestion()
   } else {
     if (score > 0) {

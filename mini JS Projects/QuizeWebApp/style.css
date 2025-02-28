@@ -1,19 +1,23 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-}
-.quiz-container {
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 20px;
+  
 }
-.header{
+header {
+  width: 100%;
+  margin: 0 auto;
+}
+header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-#question{
+#question {
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 ul {
   list-style: none;
@@ -32,7 +36,8 @@ li {
 .wrong {
   background: lightcoral;
 }
-.attempt_link,.timer{
+.attempt_link,
+.timer {
   text-decoration: none;
   padding: 6px 12px;
   background-color: #f0f0f0;
@@ -40,4 +45,21 @@ li {
   color: #333;
   font-weight: 700;
   font-size: 1.4rem;
+}
+.no_attempt {
+  list-style-type: none;
+  padding: 6px 12px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+@media (max-width:500px) {
+  header nav {
+   flex-direction: column;
+   justify-content: start;
+   align-items: start;
+  }
 }
